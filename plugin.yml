@@ -1,0 +1,6 @@
+name: HUBCore
+main: fr.lemonadd.hubcore.Main
+description: HUBCore
+version: 1.0.0
+author: LemonAdd
+api-version: 1.13
