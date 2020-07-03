@@ -1,9 +1,7 @@
 package fr.lemonadd.hubcore;
 
 import fr.lemonadd.hubcore.commands.Trails;
-import fr.lemonadd.hubcore.events.ClickEvent;
-import fr.lemonadd.hubcore.events.Movement;
-import fr.lemonadd.hubcore.events.Quit;
+import fr.lemonadd.hubcore.events.*;
 import fr.lemonadd.hubcore.managers.BarManager;
 import fr.lemonadd.hubcore.managers.SBManager;
 import fr.lemonadd.hubcore.managers.TabManager;
@@ -54,6 +52,12 @@ public class Main extends JavaPlugin implements Listener {
         }
         */
         /* CONNEXION DB */
+
+        /* SETUP EVENTS */
+        pm.registerEvents(new Interact(), this);
+        pm.registerEvents(new Join(), this);
+        pm.registerEvents(new PlayerMoves(), this);
+        /* SETUP EVENTS */
 
         /* SETUP TAB */
         tab.addHeader("\n&7&l--------- &c&lNOM DU SERVEUR &7&l----------\n\n");

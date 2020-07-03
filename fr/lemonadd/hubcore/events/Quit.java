@@ -9,6 +9,8 @@ public class Quit implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
+        event.setQuitMessage("");
+
         ParticulesData p = new ParticulesData(event.getPlayer().getUniqueId());
         if (p.hasID()) {
             p.endTask();
