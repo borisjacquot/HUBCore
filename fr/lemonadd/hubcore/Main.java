@@ -1,8 +1,13 @@
 package fr.lemonadd.hubcore;
 
+import fr.lemonadd.hubcore.commands.Trails;
+import fr.lemonadd.hubcore.events.ClickEvent;
+import fr.lemonadd.hubcore.events.Movement;
+import fr.lemonadd.hubcore.events.Quit;
 import fr.lemonadd.hubcore.managers.BarManager;
 import fr.lemonadd.hubcore.managers.SBManager;
 import fr.lemonadd.hubcore.managers.TabManager;
+import fr.lemonadd.hubcore.models.GUI;
 import fr.lemonadd.hubcore.sql.MySQL;
 import fr.lemonadd.hubcore.sql.SQLGetter;
 import org.bukkit.Bukkit;
@@ -12,6 +17,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.SQLException;
@@ -26,10 +32,12 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        PluginManager pm = this.getServer().getPluginManager();
         this.SQL = new MySQL();
         this.data = new SQLGetter(this);
         this.tab = new TabManager(this);
         this.score = new SBManager(this);
+        GUI menu = new GUI();
 
         /* CONNEXION DB */
         /*
@@ -60,8 +68,8 @@ public class Main extends JavaPlugin implements Listener {
         tab.showTab();
         /* SETUP TAB */
 
-        /* SETUP BAR */
-        this.getServer().getPluginManager().registerEvents(this,this);
+        /* SETUP BAR + SCOREBOARD */
+        pm.registerEvents(this,this);
         bar = new BarManager(this);
         bar.createBar();
 
@@ -71,11 +79,17 @@ public class Main extends JavaPlugin implements Listener {
                 score.createBoard(on);
             }
 
-        /* SETUP BAR */
+        /* SETUP BAR + SCOREBOARD */
 
-        /* SETUP SCOREBOARD */
-        this.getServer().getPluginManager().registerEvents(this,this);
-        /* SETUP SCOREBOARD */
+        /* SETUP PARTICULES */
+        menu.register();
+        pm.registerEvents(new ClickEvent(), this);
+        pm.registerEvents(new Quit(), this);
+        pm.registerEvents(new Movement(), this);
+        this.getCommand("trails").setExecutor(new Trails());
+        /* SETUP PARTICULES */
+
+
     }
 
     @Override
