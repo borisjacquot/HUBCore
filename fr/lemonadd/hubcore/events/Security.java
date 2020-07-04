@@ -50,7 +50,9 @@ public class Security  implements Listener {
 
     @EventHandler
     public void godMod(EntityDamageEvent event) {
-        event.setCancelled(true);
+        if (event.getCause() == EntityDamageEvent.DamageCause.FALLING_BLOCK || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
+            event.setCancelled(true);
+        }
     }
 
     @EventHandler
