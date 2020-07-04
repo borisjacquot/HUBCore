@@ -26,6 +26,12 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+
+        /* perms
+        hubcore.edit        -> pouvoir construire
+        hubcore.doublejump  -> double jump
+         */
+
         PluginManager pm = this.getServer().getPluginManager();
         this.SQL = new MySQL();
         this.data = new SQLGetter(this);
@@ -55,6 +61,7 @@ public class Main extends JavaPlugin implements Listener {
         pm.registerEvents(new Interact(), this);
         pm.registerEvents(new Join(), this);
         pm.registerEvents(new PlayerMoves(), this);
+        pm.registerEvents(new Security(), this);
         /* SETUP EVENTS */
 
         /* SETUP COMMANDS */

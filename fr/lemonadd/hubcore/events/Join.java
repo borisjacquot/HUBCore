@@ -16,6 +16,7 @@ public class Join implements Listener {
         event.setJoinMessage("[Préfixe] " + player.getName() + " fait son entrée !");
 
         // set items dans l'inventaire
+        player.getInventory().clear();
         ItemStack item = new ItemBuilder(Material.LIME_DYE, 1)
                 .setName("§a§lJoueurs affichés")
                 .setLore("§9Permet de cacher les joueurs", "§a§lJoueurs actuellement affichés")
