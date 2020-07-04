@@ -33,6 +33,13 @@ public class Join implements Listener {
                 .setName("§d§lJOUER")
                 .setLore("§9Affiche la liste des jeux")
                 .toItemStack();
+        player.getInventory().setItem(4,item);
+
+        item = new ItemBuilder(Material.PLAYER_HEAD, 1)
+                .setName("§3§lProfil & options")
+                .setLore("§9Affiche votre profil")
+                .setSkullOwner(player.getName())
+                .toItemStack();
         player.getInventory().setItem(0,item);
     }
 }

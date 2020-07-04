@@ -62,6 +62,7 @@ public class Main extends JavaPlugin implements Listener {
         pm.registerEvents(new Join(), this);
         pm.registerEvents(new PlayerMoves(), this);
         pm.registerEvents(new Security(), this);
+        pm.registerEvents(new Ping(this), this);
         /* SETUP EVENTS */
 
         /* SETUP COMMANDS */

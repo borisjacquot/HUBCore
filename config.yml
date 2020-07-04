@@ -1,4 +1,5 @@
 messages:
+  motd: "&c&lPenser à changer ce message"
   tablist:
     header:
       - "\n&7&l--------- &c&lNOM DU SERVEUR &7&l----------\n\n"
