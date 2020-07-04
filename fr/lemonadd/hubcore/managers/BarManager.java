@@ -28,7 +28,7 @@ public class BarManager {
     }
 
     public void createBar() {
-        bar = Bukkit.createBossBar(format("&cMessage de test 1"), BarColor.RED, BarStyle.SOLID);
+        bar = Bukkit.createBossBar(format(plugin.getConfig().getString("messages.bossbar.msg1")), BarColor.RED, BarStyle.SOLID);
         bar.setVisible(true);
         cast();
     }
@@ -49,20 +49,20 @@ public class BarManager {
                         break;
                     case 0:
                         bar.setColor(BarColor.PINK);
-                        bar.setTitle(format("&d&lMessage de test 2"));
+                        bar.setTitle(format(plugin.getConfig().getString("messages.bossbar.msg2")));
                         break;
                     case 1:
                         bar.setColor(BarColor.BLUE);
-                        bar.setTitle(format("&b&lMessage de test 3"));
+                        bar.setTitle(format(plugin.getConfig().getString("messages.bossbar.msg3")));
                         break;
                     case 2:
                         bar.setColor(BarColor.GREEN);
-                        bar.setTitle(format("&a&lMessage de test 4"));
+                        bar.setTitle(format(plugin.getConfig().getString("messages.bossbar.msg4")));
                         break;
                     case 3:
                     default:
                         bar.setColor(BarColor.RED);
-                        bar.setTitle(format("&cMessage de test 1"));
+                        bar.setTitle(format(plugin.getConfig().getString("messages.bossbar.msg1")));
                         count = -1;
                         break;
                 }

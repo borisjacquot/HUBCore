@@ -1,0 +1,26 @@
+messages:
+  tablist:
+    header:
+      - "\n&7&l--------- &c&lNOM DU SERVEUR &7&l----------\n\n"
+      - "\n&7&l--------- &9&lNOM DU SERVEUR &7&l----------\n\n"
+      - "\n&7&l--------- &d&lNOM DU SERVEUR &7&l----------\n\n"
+    footer:
+      - "\n\n&7Insérer un text random oui &csalut &rahah.\n\n"
+      - "\n\n&7Je peux changer le message aussi mdr lol\n\n"
+  bossbar:
+    msg1: "&c&lMessage de test 1"
+    msg2: "&d&lMessage de test 2"
+    msg3: "&b&lMessage de test 3"
+    msg4: "&a&lMessage de test 4"
+  scoreboard:
+    titre: "&8&l>> &e&lNOM SERVEUR &8&l<<"
+    lignes:
+      - " &8&l> &esuperserveur.com"
+      - ""
+      - " &8&l> &7Connectés : &a"
+      - " "
+      - " &8&l> &7Coins : &e51k"
+      - "  "
+      - " &8&l> &7Rank : &cAdmin"
+      - " &8&l> &6"
+      - "    "

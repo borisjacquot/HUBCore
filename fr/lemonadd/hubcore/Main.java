@@ -9,16 +9,12 @@ import fr.lemonadd.hubcore.models.GUI;
 import fr.lemonadd.hubcore.sql.MySQL;
 import fr.lemonadd.hubcore.sql.SQLGetter;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.sql.SQLException;
 
 public class Main extends JavaPlugin implements Listener {
 
@@ -36,6 +32,8 @@ public class Main extends JavaPlugin implements Listener {
         this.tab = new TabManager(this);
         this.score = new SBManager(this);
         GUI menu = new GUI();
+
+        this.saveDefaultConfig();
 
         /* CONNEXION DB */
         /*
@@ -59,16 +57,17 @@ public class Main extends JavaPlugin implements Listener {
         pm.registerEvents(new PlayerMoves(), this);
         /* SETUP EVENTS */
 
+        /* SETUP COMMANDS */
+
+        /* SETUP COMMANDS */
+
         /* SETUP TAB */
-        tab.addHeader("\n&7&l--------- &c&lNOM DU SERVEUR &7&l----------\n\n");
-        tab.addHeader("\n&7&l--------- &9&lNOM DU SERVEUR &7&l----------\n\n");
-        tab.addHeader("\n&7&l--------- &d&lNOM DU SERVEUR &7&l----------\n\n");
-
-        tab.addFooter("\n&7Joueurs en ligne : &c&l" + Bukkit.getOnlinePlayers().size() +
-                "\n\n&7Insérer un text random oui &csalut &rahah.\n");
-        tab.addFooter("\n&7Joueurs en ligne : &c&l" + Bukkit.getOnlinePlayers().size() +
-                "\n\n&7Je peux changer le message aussi mdr lol\n\n");
-
+        for (String msg : this.getConfig().getStringList("messages.tablist.header")) {
+            tab.addHeader(msg);
+        }
+        for (String msg : this.getConfig().getStringList("messages.tablist.footer")) {
+            tab.addFooter("\n&7Joueurs en ligne : &c&l" + Bukkit.getOnlinePlayers().size() + msg);
+        }
         tab.showTab();
         /* SETUP TAB */
 
