@@ -1,18 +1,26 @@
 package fr.lemonadd.hubcore.events;
 
 import fr.lemonadd.hubcore.utils.ItemBuilder;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
+import fr.lemonadd.hubcore.Main;
 
 public class Join implements Listener {
-    
+    private Main plugin;
+    public Join(Main plugin) { this.plugin = plugin; }
+
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+
+        spawn(player);
+
         event.setJoinMessage("[Préfixe] " + player.getName() + " fait son entrée !");
 
         // set items dans l'inventaire
@@ -41,5 +49,15 @@ public class Join implements Listener {
                 .setSkullOwner(player.getName())
                 .toItemStack();
         player.getInventory().setItem(0,item);
+    }
+
+    private void spawn(Player player) {
+        Location loc = new Location(Bukkit.getWorld(plugin.getConfig().getString("spawn.world")),
+                plugin.getConfig().getDouble("spawn.x"),
+                plugin.getConfig().getDouble("spawn.y"),
+                plugin.getConfig().getDouble("spawn.z"),
+                (float) plugin.getConfig().getDouble("spawn.yaw"),
+                (float) plugin.getConfig().getDouble("spawn.p"));
+        player.teleport(loc);
     }
 }

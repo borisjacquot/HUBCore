@@ -1,5 +1,7 @@
 package fr.lemonadd.hubcore;
 
+import fr.lemonadd.hubcore.commands.Hub;
+import fr.lemonadd.hubcore.commands.SetHub;
 import fr.lemonadd.hubcore.commands.Trails;
 import fr.lemonadd.hubcore.events.*;
 import fr.lemonadd.hubcore.managers.BarManager;
@@ -30,6 +32,7 @@ public class Main extends JavaPlugin implements Listener {
         /* perms
         hubcore.edit        -> pouvoir construire
         hubcore.doublejump  -> double jump
+        hubcore.sethub      -> set point de spawn
          */
 
         PluginManager pm = this.getServer().getPluginManager();
@@ -59,14 +62,15 @@ public class Main extends JavaPlugin implements Listener {
 
         /* SETUP EVENTS */
         pm.registerEvents(new Interact(), this);
-        pm.registerEvents(new Join(), this);
+        pm.registerEvents(new Join(this), this);
         pm.registerEvents(new PlayerMoves(), this);
         pm.registerEvents(new Security(), this);
         pm.registerEvents(new Ping(this), this);
         /* SETUP EVENTS */
 
         /* SETUP COMMANDS */
-
+        this.getCommand("sethub").setExecutor(new SetHub(this));
+        this.getCommand("hub").setExecutor(new Hub(this));
         /* SETUP COMMANDS */
 
         /* SETUP TAB */

@@ -7,3 +7,7 @@ api-version: 1.15
 commands:
   trails:
     description: Particules
+  sethub:
+    description: Set le spawn du Hub à votre position
+  hub:
+    description: Se téléporter au hub
